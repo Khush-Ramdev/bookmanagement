@@ -1,6 +1,8 @@
 package Service;
 import DAO.UserDAO;
 import TO.User;
+
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class UserService {
@@ -23,7 +25,7 @@ public class UserService {
         userDAO.add(user);
     }
 
-    public boolean login(){
+    public User login() {
         boolean status = false;
         System.out.println("Please Enter you username");
         String userName = sc.next();
@@ -31,15 +33,20 @@ public class UserService {
         String password = sc.next();
 
         user = new User(userName,password);
-        boolean check = userDAO.checkUser(user);
-        if(check){
-            System.out.println("Logged in succesfully");
-            status = true;
-        }else{
-            System.out.println("Please try again");
+        ResultSet rs = userDAO.checkUser(user);
+        try {
+            while (rs.next()) {
+                user.setUsername(rs.getString(1));
+                user.setPassword(rs.getString(2));
+                user.setEmailID(rs.getString(3));
+                System.out.println(rs.getString(6));
+                user.setUserType(rs.getString(6));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         sc.nextLine();
-        return status;
+        return user;
     }
 
     public boolean isAdmin(){

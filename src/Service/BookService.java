@@ -1,12 +1,15 @@
 package Service;
 import DAO.BooksDAO;
+import TO.User;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class BookService {
 
     BooksDAO booksDAO = new BooksDAO();
-    public ArrayList getAllBooks(){
+
+    public ArrayList<String> getAllBooks() {
         ResultSet rs  = booksDAO.getAllBooks();
         ArrayList<String> books = new ArrayList<String>();
         try{
@@ -20,8 +23,8 @@ public class BookService {
         return books;
     }
 
-    public ArrayList getCompletedBooks(String userName){
-        ResultSet rs  = booksDAO.getCompletedBooks(userName);
+    public User getCompletedBooks(User user) {
+        ResultSet rs = booksDAO.getCompletedBooks(user.getUsername());
         ArrayList<String> books = new ArrayList<String>();
         try{
             while(rs.next()){
@@ -33,11 +36,12 @@ public class BookService {
         catch (Exception e){
             e.printStackTrace();
         }
-        return books;
+        user.setCompleted(books);
+        return user;
     }
 
-    public ArrayList getFavoriteBooks(String userName){
-        ResultSet rs  = booksDAO.getFavoriteBooks(userName);
+    public User getFavoriteBooks(User user) {
+        ResultSet rs = booksDAO.getFavoriteBooks(user.getUsername());
         ArrayList<String> books = new ArrayList<String>();
         try{
             while(rs.next()){
@@ -49,6 +53,7 @@ public class BookService {
         catch (Exception e){
             e.printStackTrace();
         }
-        return books;
+        user.setFavorite(books);
+        return user;
     }
 }

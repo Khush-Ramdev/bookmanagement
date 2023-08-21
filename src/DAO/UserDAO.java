@@ -28,20 +28,19 @@ public class UserDAO {
         }
     }
 
-    public boolean checkUser (User user){
+    public ResultSet checkUser(User user) {
         boolean status = false;
         try{
             PreparedStatement statement = con.prepareStatement("Select * from user where userName = ? && userPassword = ?;");
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
-            ResultSet rs = statement.executeQuery();
-            status = rs.next();
+            return statement.executeQuery();
         }
         catch(Exception e){
             System.out.println("Failed to fetch user..");
             e.printStackTrace();
         }
-        return status;
+        return null;
     }
 
     public boolean isAdmin (User user){

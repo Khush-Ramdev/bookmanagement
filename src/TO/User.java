@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class User {
     String username, emailID, firstName, lastName, password, userType;
-    ArrayList<Integer> wishlist,favorite,completed;
+    ArrayList<String> wishlist, favorite, completed;
 
-    public User(){
+    public User() {
 
     }
 
@@ -22,7 +22,7 @@ public class User {
         this.userType = userType;
     }
 
-    public User(String username, String emailID, String firstName, String lastName, String password, String userType, ArrayList<Integer> wishlist, ArrayList<Integer> favorite, ArrayList<Integer> completed) {
+    public User(String username, String emailID, String firstName, String lastName, String password, String userType, ArrayList<String> wishlist, ArrayList<String> favorite, ArrayList<String> completed) {
         this.username = username;
         this.emailID = emailID;
         this.firstName = firstName;
@@ -82,27 +82,27 @@ public class User {
         this.userType = userType;
     }
 
-    public ArrayList<Integer> getWishlist() {
+    public ArrayList<String> getWishlist() {
         return wishlist;
     }
 
-    public void setWishlist(ArrayList<Integer> wishlist) {
+    public void setWishlist(ArrayList<String> wishlist) {
         this.wishlist = wishlist;
     }
 
-    public ArrayList<Integer> getFavorite() {
+    public ArrayList<String> getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(ArrayList<Integer> favorite) {
+    public void setFavorite(ArrayList<String> favorite) {
         this.favorite = favorite;
     }
 
-    public ArrayList<Integer> getCompleted() {
+    public ArrayList<String> getCompleted() {
         return completed;
     }
 
-    public void setCompleted(ArrayList<Integer> completed) {
+    public void setCompleted(ArrayList<String> completed) {
         this.completed = completed;
     }
 }

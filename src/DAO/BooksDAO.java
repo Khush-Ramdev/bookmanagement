@@ -40,8 +40,7 @@ public class BooksDAO {
         try{
             PreparedStatement statement = con.prepareStatement("select * from books where bookID in (Select bookID from userFavorites where userName = ?);");
             statement.setString(1, userName);
-            ResultSet rs = statement.executeQuery();
-            return rs;
+            return statement.executeQuery();
         }
         catch(Exception e){
             System.out.println("Failed to fetch completed books..");
