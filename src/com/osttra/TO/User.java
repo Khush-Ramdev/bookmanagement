@@ -1,10 +1,10 @@
-package TO;
+package com.osttra.TO;
 
 import java.util.ArrayList;
 
 public class User {
     String username, emailID, firstName, lastName, password, userType;
-    ArrayList<String> wishlist, favorite, completed;
+    ArrayList<Book> wishlist, favorite, completed;
 
     public User() {
 
@@ -22,7 +22,7 @@ public class User {
         this.userType = userType;
     }
 
-    public User(String username, String emailID, String firstName, String lastName, String password, String userType, ArrayList<String> wishlist, ArrayList<String> favorite, ArrayList<String> completed) {
+    public User(String username, String emailID, String firstName, String lastName, String password, String userType, ArrayList<Book> wishlist, ArrayList<Book> favorite, ArrayList<Book> completed) {
         this.username = username;
         this.emailID = emailID;
         this.firstName = firstName;
@@ -82,27 +82,27 @@ public class User {
         this.userType = userType;
     }
 
-    public ArrayList<String> getWishlist() {
+    public ArrayList<Book> getWishlist() {
         return wishlist;
     }
 
-    public void setWishlist(ArrayList<String> wishlist) {
+    public void setWishlist(ArrayList<Book> wishlist) {
         this.wishlist = wishlist;
     }
 
-    public ArrayList<String> getFavorite() {
+    public ArrayList<Book> getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(ArrayList<String> favorite) {
+    public void setFavorite(ArrayList<Book> favorite) {
         this.favorite = favorite;
     }
 
-    public ArrayList<String> getCompleted() {
+    public ArrayList<Book> getCompleted() {
         return completed;
     }
 
-    public void setCompleted(ArrayList<String> completed) {
+    public void setCompleted(ArrayList<Book> completed) {
         this.completed = completed;
     }
 }

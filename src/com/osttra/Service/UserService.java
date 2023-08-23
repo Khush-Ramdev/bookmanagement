@@ -1,6 +1,7 @@
-package Service;
-import DAO.UserDAO;
-import TO.User;
+package com.osttra.Service;
+
+import com.osttra.DAO.UserDAO;
+import com.osttra.TO.User;
 
 import java.sql.ResultSet;
 import java.util.Scanner;
@@ -26,26 +27,16 @@ public class UserService {
     }
 
     public User login() {
-        boolean status = false;
         System.out.println("Please Enter you username");
         String userName = sc.next();
         System.out.println("Please enter you password");
         String password = sc.next();
 
         user = new User(userName,password);
-        ResultSet rs = userDAO.checkUser(user);
-        try {
-            while (rs.next()) {
-                user.setUsername(rs.getString(1));
-                user.setPassword(rs.getString(2));
-                user.setEmailID(rs.getString(3));
-                System.out.println(rs.getString(6));
-                user.setUserType(rs.getString(6));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        userDAO.checkUser(user);
+        System.out.println("Press \"ENTER\" to continue...");
         sc.nextLine();
+//        sc.nextLine();
         return user;
     }
 

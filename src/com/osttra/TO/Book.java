@@ -1,4 +1,4 @@
-package TO;
+package com.osttra.TO;
 
 public class Book {
     String bookName,authorName,description;
